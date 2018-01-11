@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <title>Placeholder | {% block subtitle %}{% endblock %}</title>
+
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw=" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/css/layout.css"/>
+
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" integrity="sha256-uWtSXRErwH9kdJTIr1swfHFJn/d/WQ6s72gELOHXQGM=" crossorigin="anonymous"></script>
+        {% endblock %}
+    </head>
+
+    <body>
+        {% if isLoginPage %}
+        <!-- Navbar -->
+        <div class="navbar">
+            <nav class="blue">
+                <div class="nav-wrapper">
+                    <a class="brand-logo center" href="/">Placeholder</a>
+                    <ul id="nav-mobile" class="right">
+                        <li><a href="/login" title="Login"><i class="material-icons">account_circle</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        {% endif %}
+
+        <!-- Content -->
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
