@@ -17,7 +17,7 @@
     </head>
 
     <body>
-        {% if isLoginPage == false %}
+        {% if isLoginPage %}
         <!-- Navbar -->
         <div class="navbar">
             <nav class="blue">
@@ -29,6 +29,7 @@
                 </div>
             </nav>
         </div>
+        {% endif %}
 
         <!-- Content -->
         <div id="content">
