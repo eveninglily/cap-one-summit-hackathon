@@ -1,6 +1,7 @@
 venv/
 secret.py
 __pycache__/
+.DS_Store
 *.pyc
 *~
 *#
