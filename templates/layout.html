@@ -7,17 +7,18 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
         <!-- CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw=" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="/css/layout.css"/>
 
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" integrity="sha256-uWtSXRErwH9kdJTIr1swfHFJn/d/WQ6s72gELOHXQGM=" crossorigin="anonymous"></script>
+        <script src="/js/layout.js"></script>
         {% endblock %}
     </head>
 
     <body>
-        {% if isLoginPage %}
+        {% if not isLoginPage %}
         <!-- Navbar -->
         <div class="navbar">
             <nav class="blue">
@@ -25,9 +26,17 @@
                     <a class="brand-logo center" href="/">Placeholder</a>
                     <ul id="nav-mobile" class="right">
                         <li><a href="/login" title="Login"><i class="material-icons">account_circle</i></a></li>
+                        <li><a href="https://github.com/McIntireEvan/cap-one-summit-hackathon" target="_blank" rel="noopener noreferrer" title="Github"><i class="fa fa-github fa-2x"></i></a></li>
+                        <li><a href="#helpModal" title="Help" class="modal-trigger"><i class="material-icons">help</i></a></li>
                     </ul>
                 </div>
             </nav>
+        </div>
+        <div id="helpModal" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
         </div>
         {% endif %}
 

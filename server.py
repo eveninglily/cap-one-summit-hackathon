@@ -12,7 +12,7 @@ def map():
 
 @app.route("/login")
 def login():
-    return render_template("login.html", isIndex=True)
+    return render_template("login.html", isLoginPage=True)
 
 @app.route("/")
 def index():

@@ -1,88 +1,28 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
+{% block head %}
+    {{ super() }}
 
-<head>
-  <title>"Alexa, Do I Have a Problem?"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="/js/graphs.js"></script>
+{% endblock %}
 
-  <!-- JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <script src="https://use.fontawesome.com/87723fb1e0.js"></script>
-  <script src="/js/graphs.js"></script>
+{% block content %}
+    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">Hello John.</h5>
+    <h5 style="text-align: center">Here are your statistics:</h5>
+    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">And here are your graphs:</h5>
 
-</head>
-
-<body>
-  <!-- Navbar -->
-  <div class="navbar-fixed">
-    <nav class="blue darken-1">
-      <div class="nav-wrapper">
-
-        <a class="brand-logo center" href="/">Capital Doctor</a>
-        <ul id="nav-mobile" class="right">
-          <li>
-            <!-- Modal Trigger -->
-            <a href="#modal1" title="Help">Help</a>
-
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal modal-fixed-footer">
-              <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/McIntireEvan/cap-one-summit-hackathon" target="_blank">
-                          <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                      </a>
-          </li>
-        </ul>
-
-      </div>
-    </nav>
-  </div>
-
-  <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">Hello John.</h5>
-
-
-  <h5 style="text-align: center">Here are your statistics:</h5>
-  <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">And here are your graphs:</h5>
-
-  <!--
-      <div style="text-align: center; padding-top: 50px; padding-bottom: 50px">
-        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Visualize Your Transaction Data</a>
-        -->
-  <!-- Dropdown Structure
-         <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#histogram" onclick="drawBarChart()">Histogram</a></li>
-          <li><a href="#pieChart" onclick="drawPieChart()">Pie Chart</a></li>
-          <li><a href="#lineChart" onclick="drawLineChart()">Line Chart</a></li>
-        </ul>
-      </div> -->
-
-  <div class="row">
-    <div class="col s4">
-      <canvas id="histogram" width="400" height="400"></canvas>
+    <div class="row">
+        <div class="col s4">
+            <canvas id="histogram" width="400" height="400"></canvas>
+        </div>
+        <div class="col s4">
+            <canvas id="pieChart" width="400" height="400"></canvas>
+        </div>
+        <div class="col s4">
+            <canvas id="lineChart" width="400" height="400"></canvas>
+        </div>
     </div>
-    <div class="col s4">
-      <canvas id="pieChart" width="400" height="400"></canvas>
-    </div>
-    <div class="col s4">
-      <canvas id="lineChart" width="400" height="400"></canvas>
-    </div>
-  </div>
-
-
-</body>
-
-</html>
+{% endblock %}
