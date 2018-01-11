@@ -22,3 +22,10 @@ def suggest_alternative(lat, lng, category, prefs):
     print(json.dumps(req.json(), indent=4))
 
 suggest_alternative(38.878337, -77.100703, "bar", {"bar":"art_gallery"})
+
+# habit alternatives:
+# bar/liquor_store: art_gallery/museum
+# food/meal_delivery/restaurant: physiotherapist/spa
+# shopping_mall/department_store/clothing_store:
+# movie_theater: amusement_park/aquarium
+# casino: campground
