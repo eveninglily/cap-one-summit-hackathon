@@ -6,6 +6,10 @@ from flask import *
 app = Flask(__name__, static_url_path="")
 
 
+@app.route("/map")
+def map():
+    return render_template("map.html")
+
 @app.route("/login")
 def login():
     return render_template("login.html", isIndex=True)
