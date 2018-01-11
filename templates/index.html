@@ -78,9 +78,15 @@
             var ctx = document.getElementById('lineChart').getContext('2d');
             var myLineChart = new Chart(ctx, {
               type: 'line',
-              data: [ {x: 10, y: 20}, {x: 5, y: 20} ],
+              data: [20, 10],
             });
           }
+
+          $(document).ready(function (){
+            drawBarChart()
+            drawPieChart()
+            drawLineChart()
+          });
         </script>
 
     </head>
@@ -120,17 +126,22 @@
         </nav>
       </div>
 
-      <div style="text-align: center; padding-top: 50px; padding-bottom: 50px">
-        <!-- Dropdown Trigger -->
-        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Visualize Your Transaction Data</a>
+      <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">Hey, *insert name here*.</h5>
+      <h5 style="text-align: center">Here are your statistics:</h5>
+      <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">And here are your graphs:</h5>
 
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
+
+      <!--
+      <div style="text-align: center; padding-top: 50px; padding-bottom: 50px">
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Visualize Your Transaction Data</a>
+        -->
+        <!-- Dropdown Structure
+         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#histogram" onclick="drawBarChart()">Histogram</a></li>
           <li><a href="#pieChart" onclick="drawPieChart()">Pie Chart</a></li>
           <li><a href="#lineChart" onclick="drawLineChart()">Line Chart</a></li>
         </ul>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col s4">
