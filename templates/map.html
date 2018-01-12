@@ -11,4 +11,11 @@
 
 {% block content %}
     <div id="map"></div>
+    <div id="purchase-history" class="map-overlay card-panel">
+        <ul class="collection">
+            {% for purchase in purchase_history %}
+            <li class="collection-item">{{ purchase[0] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
