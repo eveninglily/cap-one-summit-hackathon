@@ -1,7 +1,5 @@
 import requests
 from constants import *
-import sys
-sys.path.append('..')
 import secret
 
 
@@ -42,10 +40,21 @@ def categorize_purchases(purchases):
 
     for purchase in purchases:
         purchase_general_category = get_general_category(get_merchant_categories(purchase["merchant_id"]))
-        purchase_tuple = (purchase["purchase_date"], purchase["amount"])
+        purchase_tuple = (purchase["purchase_date"], purchase["amount"], purchase_general_category)
         categorized_purchases[purchase_general_category].append(purchase_tuple)
 
     return categorized_purchases
 
+def sort_purchases_by_date(categorized_purchases):
+    all_purchases = []
+    for category in categorized_purchases.keys():
+        all_purchases.extend(categorized_purchases[category])
+    all_purchases.sort(key=lambda p: p[0])
+
+    return all_purchases
+
+def get_sorted_filtered_purchases(customer_id):
+    return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))
+
 if __name__ == "__main__":
-    print(categorize_purchases(get_all_purchases(CUSTOMER_ID)))
+    print(get_sorted_filtered_purchases(CUSTOMER_ID))
