@@ -1,5 +1,8 @@
 from datetime import date
 from collections import OrderedDict
+from constants import *
+from secret import *
+import requests
 
 # Gets total spending and avg days/visit for a category
 def parse_category(obj, category):
@@ -65,3 +68,19 @@ def process(obj):
         print("Frequency: {}, Amount: {}".format(status[category][1], status[category][0]))
         print("---")
     #print(status)
+
+# Returns 0 for "good", 1 for drinking, 2 for shopping, 3 for food
+def classify_merchant(merchant_id):
+    req = requests.get('http://api.reimaginebanking.com/merchants/{}'.format(merchant_id),
+                        params={'key': NESSIE_KEY})
+    data = req.json()
+    for category in data['category']:
+        for c in GENERAL_CATEGORIES:
+            if category in list(GENERAL_CATEGORIES[c]):
+                if c == "drinking_and_gambling":
+                    return 1
+                elif c == "shopping"
+                    return 2
+                else:
+                    return 3
+    return 0
