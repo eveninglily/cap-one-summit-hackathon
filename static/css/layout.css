@@ -9,13 +9,8 @@ nav, .navbar-fixed, .nav-wrapper i {
 }
 
 .nav-wrapper {
-    font-family: "Varela Round", "Roboto", sans-serif;
     padding-left: 1rem;
     padding-right: 1rem;
-}
-
-h3, h4 {
-    font-family: "Varela Round", "Roboto", sans-serif;
 }
 
 h3 {
@@ -28,11 +23,6 @@ h3 {
 
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #2196f3 !important;
-}
-
-#content {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
 }
 
 .alert {
