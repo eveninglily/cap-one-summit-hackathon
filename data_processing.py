@@ -1,7 +1,10 @@
 import requests
 from constants import *
 import secret
+import classify
 
+
+PURCHASE_HISTORY_SIZE = 30
 
 def get_account_ids(customer_id):
     get_params = {"key": secret.NESSIE_KEY}
@@ -65,10 +68,10 @@ def sort_purchases_by_date(categorized_purchases):
     return all_purchases
 
 def get_sorted_filtered_purchases(customer_id):
-    return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))
+    return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))[:PURCHASE_HISTORY_SIZE]
 
-def strip_data():
-    data = get_sorted_filtered_purchases(CUSTOMER_ID)
+def strip_data(customer_id):
+    data = get_sorted_filtered_purchases(customer_id)
     stripped = {}
     for entry in data:
         if not entry['purchase_category'] in stripped.keys():
@@ -76,6 +79,16 @@ def strip_data():
         stripped[entry['purchase_category']].append((entry['purchase_date'], entry['purchase_amount']))
     return stripped
 
+def get_alexa_data(customer_id):
+    data = strip_data(customer_id)
+    classified = classify.process(data)
+    score = {}
+    for category in classified:
+        score[category] = classified[category][0] + classified[category][1]
+    from operator import itemgetter
+    s = sorted(score.items(), key=itemgetter(1))
+    return s[len(s) - 1]
+
 if __name__ == "__main__":
-    #print(get_sorted_filtered_purchases(CUSTOMER_ID))
-    print(strip_data())
+    print(get_sorted_filtered_purchases(CUSTOMER_ID))
+    print(get_alexa_data(CUSTOMER_ID))

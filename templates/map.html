@@ -15,8 +15,8 @@
         <h4>Recent Purchases</h4>
         <div class="collection">
             {% for purchase in purchase_history %}
-            <a href="#!" class="collection-item purchase-item">
-                <div style="display:none">{{ purchase["geocode"] }}</div>
+            <a class="collection-item purchase-item">
+                <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
                 <h5 class="merchant-name">{{ purchase["merchant_name"] }}</h5>
                 <div class="purchase-date">{{ purchase["purchase_date"] }}</div>
             </a>

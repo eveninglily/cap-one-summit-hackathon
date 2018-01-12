@@ -89,4 +89,4 @@ def create_nessie_purchase(id, merchant, date, amount, desc):
     print(req.content)
 
 if __name__ == "__main__":
-    generate_nessie_purchases(CUSTOMER_ID)
+    generate_nessie_purchases("5a563d3d5eaa612c093b0ba9")
