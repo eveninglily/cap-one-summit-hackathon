@@ -31,6 +31,13 @@ def suggest_alternative(lat, lng, category, prefs):
 
     # Return top 5 suggestions
     #print(json.dumps(req.json()["results"][0], indent=4))
-    return req.json()["results"][:5]
+    cleaned = []
+    for data in req.json()["results"][:5]:
+        d = {}
+        d['name'] = data['name']
+        d['lat'] = data['geometry']['location']["lat"]
+        d['lng'] = data['geometry']['location']["lng"]
+        cleaned.append(d)
+    return cleaned
 
-#print(suggest_alternative(38.878337, -77.100703, "casino", prefs))
+print(suggest_alternative(38.878337, -77.100703, "casino", prefs))
