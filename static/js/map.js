@@ -21,6 +21,7 @@ function getSuggest(category, latlng) {
                 position: {"lat": data[i].lat, "lng": data[i].lng},
                 icon: "/uploads/alt_marker.png",
                 map: map,
+                title: data[i].name,
             }));
         }
     });
