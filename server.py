@@ -2,13 +2,15 @@
 
 from flask import *
 
+import secret
+
 
 app = Flask(__name__, static_url_path="")
 
 
 @app.route("/map")
 def map():
-    return render_template("map.html")
+    return render_template("map.html", mapsKey=secret.MAPS_KEY)
 
 @app.route("/login")
 def login():
