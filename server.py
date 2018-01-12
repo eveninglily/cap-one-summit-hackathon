@@ -4,6 +4,7 @@ from flask import *
 import data_processing
 import secret
 import suggest
+from constants import PREFS
 
 
 app = Flask(__name__, static_url_path="")
@@ -47,6 +48,11 @@ def alexa():
     s = suggest.suggest_alternative(38.878337, -77.100703, category, suggest.prefs)
 
     return jsonify({'place': s[0], 'score': score, 'habit': habit})
+
+@app.route("/suggest")
+def suggest_api():
+    category = request.args.get('category')
+    return jsonify(suggest.suggest_alternative(38.878337, -77.100703, category, PREFS))
 
 if __name__ == "__main__":
     import sys

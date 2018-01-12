@@ -9,6 +9,12 @@ function initMap() {
     });
 }
 
+function getSuggest(category) {
+    $.getJSON('suggest', {'category': category}, data => {
+        console.log(data);
+    });
+}
+
 $(document).ready(function() {
     $("#purchase-history .purchase-item").click(function() {
         if (purchaseMarker) {
