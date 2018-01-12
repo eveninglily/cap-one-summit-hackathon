@@ -24,4 +24,15 @@
             {% endfor %}
         </div>
     </div>
+    <div id="recommendations" class="map-overlay card-panel">
+        <h4>Alternatives</h4>
+        <div class="collection">
+            {% for merchant in recommendations %}
+            <a class="collection-item merchant-item">
+                <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
+                <h5 class="merchant-name">{{ merchant["merchant_name"] }}</h5>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

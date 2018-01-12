@@ -4,20 +4,12 @@ import random
 import math
 import json
 
-prefs = {
-    "bar": ["gym", "bowling_alley"],
-    "liquor_store": ["grocery_or_supermarket", "cafe"],
-    "meal_takeaway": ["grocery_or_supermarket"],
-    "meal_delivery": ["grocery_or_supermarket"],
-    "shopping_mall": ["book_store", "library", "zoo", "spa", "museum"],
-    "department_store": ["book_store", "library", "zoo", "spa", "museum"],
-    "clothing_store": ["book_store", "library", "zoo", "spa", "museum"],
-    "casino": ["movie_theater", "book_store", "library", "zoo", "spa", "museum"]
-}
+from constants import PREFS
 
-def suggest_alternative(lat, lng, category, prefs):
-    i = math.floor(len(prefs[category]) * random.random())
-    type = prefs[category][i]
+
+def suggest_alternative(lat, lng, category, PREFS):
+    i = math.floor(len(PREFS[category]) * random.random())
+    type = PREFS[category][i]
     #print(type)
     req = requests.get(
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?',
@@ -40,4 +32,5 @@ def suggest_alternative(lat, lng, category, prefs):
         cleaned.append(d)
     return cleaned
 
-print(suggest_alternative(38.878337, -77.100703, "casino", prefs))
+if __name__ == "__main__":
+    print(suggest_alternative(38.878337, -77.100703, "casino", PREFS))

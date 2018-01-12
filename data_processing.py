@@ -2,6 +2,7 @@ import requests
 from constants import *
 import secret
 import classify
+import suggest
 
 
 PURCHASE_HISTORY_SIZE = 30

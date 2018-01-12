@@ -27,12 +27,12 @@ html, body, #content {
     overflow-y: auto;
 }
 
-#purchase-history .purchase-item {
+#purchase-history .purchase-item, #recommendations .merchant-item {
     background-color: rgba(255, 255, 255, 0.1);
     cursor: pointer;
 }
 
-#purchase-history .purchase-item .merchant-name {
+#purchase-history .purchase-item .merchant-name, #recommendations .merchant-item .merchant-name {
     color: white;
 }
 
@@ -42,4 +42,9 @@ html, body, #content {
 
 #purchase-history .purchase-item .purchase-amount {
     color: #00E676;
+}
+
+#recommendations {
+    bottom: 0;
+    right: 10px;
 }
