@@ -20,7 +20,9 @@ def format_money(m):
 
 @app.route("/map")
 def map():
+    print("hello?")
     purchase_history = data_processing.get_sorted_filtered_purchases(customer_id)
+    print(purchase_history)
     return render_template("map.html", mapsKey=secret.MAPS_KEY, purchase_history=purchase_history)
 
 @app.route("/")
@@ -46,7 +48,7 @@ def alexa():
     else:
         category = "bar"
 
-    s = suggest.suggest_alternative(38.878337, -77.100703, category, suggest.prefs)
+    s = suggest.suggest_alternative(38.878337, -77.100703, category, PREFS)
 
     return jsonify({'place': s[0], 'score': score, 'habit': habit})
 
