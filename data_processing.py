@@ -16,7 +16,8 @@ def get_all_purchases(customer_id):
         purchases.extend(
                 {"merchant_id": purchase["merchant_id"],
                     "purchase_date": purchase["purchase_date"],
-                    "amount": purchase["amount"]}
+                    "amount": purchase["amount"],
+                    }
                 for purchase in get_request.json() if purchase["type"] == "merchant")
     return purchases
 
@@ -24,6 +25,13 @@ def get_merchant_categories(merchant_id):
     get_params = {"key": secret.NESSIE_KEY}
     get_request = requests.get("{}/merchants/{}".format(API_ROOT, merchant_id), params=get_params)
     return get_request.json()["category"]
+
+def get_merchant_data(merchant_id):
+    get_params = {"key": secret.NESSIE_KEY}
+    get_request = requests.get("{}/merchants/{}".format(API_ROOT, merchant_id), params=get_params)
+    the_json = get_request.json()
+    return {"category": the_json["category"], "geocode": the_json["geocode"]}
+
 
 def get_general_category(categories):
     """
@@ -40,8 +48,10 @@ def categorize_purchases(purchases):
 
     for purchase in purchases:
         purchase_general_category = get_general_category(get_merchant_categories(purchase["merchant_id"]))
-        purchase_tuple = (purchase["purchase_date"], purchase["amount"], purchase_general_category)
-        categorized_purchases[purchase_general_category].append(purchase_tuple)
+        purchase_data = get_merchant_data(purchase["merchant_id"])
+        purchase_data["purchase_date"] = purchase["purchase_date"]
+        purchase_data["purchase_category"] = purchase_general_category
+        categorized_purchases[purchase_general_category].append(purchase_data)
 
     return categorized_purchases
 
@@ -49,7 +59,7 @@ def sort_purchases_by_date(categorized_purchases):
     all_purchases = []
     for category in categorized_purchases.keys():
         all_purchases.extend(categorized_purchases[category])
-    all_purchases.sort(key=lambda p: p[0])
+    all_purchases.sort(key=lambda p: p["purchase_date"])
 
     return all_purchases
 

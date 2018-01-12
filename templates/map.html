@@ -14,7 +14,7 @@
     <div id="purchase-history" class="map-overlay card-panel">
         <ul class="collection">
             {% for purchase in purchase_history %}
-            <li class="collection-item">{{ purchase[0] }}</li>
+            <li class="collection-item">{{ purchase["purchase_date"] }}</li>
             {% endfor %}
         </ul>
     </div>
