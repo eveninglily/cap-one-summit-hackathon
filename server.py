@@ -10,6 +10,12 @@ app = Flask(__name__, static_url_path="")
 customer_id = "5a563d3b5eaa612c093b0ba2"
 
 
+@app.template_filter()
+def format_money(m):
+    if m is None:
+        return "Error"
+    return "${:,.2f}".format(m)
+
 @app.route("/map")
 def map():
     purchase_history = data_processing.get_sorted_filtered_purchases(customer_id)

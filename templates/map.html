@@ -18,6 +18,7 @@
             <a class="collection-item purchase-item">
                 <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
                 <h5 class="merchant-name">{{ purchase["merchant_name"] }}</h5>
+                <div class="purchase-amount">{{ purchase["purchase_amount"] | format_money }}</div>
                 <div class="purchase-date">{{ purchase["purchase_date"] }}</div>
             </a>
             {% endfor %}

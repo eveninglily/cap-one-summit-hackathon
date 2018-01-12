@@ -8,15 +8,18 @@ html, body, #content {
     height: 100%;
 }
 
-#purchase-history {
+.map-overlay {
     position: absolute;
-    bottom: 0;
-    left: 10px;
+    background-color: rgba(84, 110, 122, 0.9);
+    color: white;
     max-width: 40%;
     max-height: 40%;
     height: 40%;
-    background-color: rgba(84, 110, 122, 0.9);
-    color: white;
+}
+
+#purchase-history {
+    bottom: 0;
+    left: 10px;
 }
 
 #purchase-history .collection {
@@ -35,4 +38,8 @@ html, body, #content {
 
 #purchase-history .purchase-item .purchase-date {
     color: #ECEFF1;
+}
+
+#purchase-history .purchase-item .purchase-amount {
+    color: #00E676;
 }
