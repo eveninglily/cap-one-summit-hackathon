@@ -19,8 +19,8 @@ html, body {
     background-color: rgba(84, 110, 122, 0.9);
     color: white;
     max-width: 35%;
-    max-height: 35%;
-    height: 35%;
+    max-height: 40%;
+    height: 40%;
 }
 
 #purchase-history {
