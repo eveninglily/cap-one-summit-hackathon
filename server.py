@@ -4,11 +4,12 @@ from flask import *
 import data_processing
 import secret
 import suggest
+import classify
 from constants import PREFS
 
 
 app = Flask(__name__, static_url_path="")
-customer_id = "5a563d3b5eaa612c093b0ba2"
+customer_id = "5a563d1b5eaa612c093b0b13"
 
 
 @app.template_filter()
@@ -53,6 +54,15 @@ def alexa():
 def suggest_api():
     category = request.args.get('category')
     return jsonify(suggest.suggest_alternative(38.878337, -77.100703, category, PREFS))
+
+@app.route('/totals')
+def get_totals():
+    data = classify
+    return jsonify(classify.parse_data(data_processing.strip_data(customer_id)))
+
+@app.route('/transactions')
+def get_transactions():
+    return jsonify(data_processing.get_sorted_filtered_purchases(customer_id))
 
 if __name__ == "__main__":
     import sys
