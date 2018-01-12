@@ -30,7 +30,7 @@ def get_merchant_data(merchant_id):
     get_params = {"key": secret.NESSIE_KEY}
     get_request = requests.get("{}/merchants/{}".format(API_ROOT, merchant_id), params=get_params)
     the_json = get_request.json()
-    return {"category": the_json["category"], "geocode": the_json["geocode"]}
+    return {"merchant_name": the_json["name"], "geocode": the_json["geocode"]}
 
 
 def get_general_category(categories):
