@@ -1,2 +1,2 @@
 # Capital One Summit 2018 Hackathon
-# Nick Paris
+## What's Not in Your Wallet?

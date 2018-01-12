@@ -1,0 +1,22 @@
+#hero-wrapper {
+    margin-top: 20vh;
+}
+
+.animation-group {
+    display: none;
+}
+
+#welcome-text {
+    margin-bottom: 2rem;
+}
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-text {
+    display: none;
+    margin-left: 10px;
+}

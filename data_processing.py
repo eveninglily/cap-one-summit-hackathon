@@ -2,6 +2,7 @@ import requests
 from constants import *
 import secret
 import classify
+import suggest
 
 
 PURCHASE_HISTORY_SIZE = 30
@@ -55,6 +56,7 @@ def categorize_purchases(purchases):
         purchase_data["purchase_date"] = purchase["purchase_date"]
         purchase_data["purchase_amount"] = purchase["amount"]
         purchase_data["purchase_category"] = purchase_general_category
+        purchase_data["classification"] = classify.classify_merchant(purchase["merchant_id"])
         categorized_purchases[purchase_general_category].append(purchase_data)
 
     return categorized_purchases

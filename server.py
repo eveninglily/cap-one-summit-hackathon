@@ -4,9 +4,12 @@ from flask import *
 import data_processing
 import secret
 import suggest
+import classify
+from constants import PREFS
 
 
 app = Flask(__name__, static_url_path="")
+#customer_id = "5a563d165eaa612c093b0ac4"
 customer_id = "5a563d3b5eaa612c093b0ba2"
 
 
@@ -18,7 +21,9 @@ def format_money(m):
 
 @app.route("/map")
 def map():
+    print("hello?")
     purchase_history = data_processing.get_sorted_filtered_purchases(customer_id)
+    print(purchase_history)
     return render_template("map.html", mapsKey=secret.MAPS_KEY, purchase_history=purchase_history)
 
 @app.route("/")
@@ -44,9 +49,24 @@ def alexa():
     else:
         category = "bar"
 
-    s = suggest.suggest_alternative(38.878337, -77.100703, category, suggest.prefs)
+    s = suggest.suggest_alternative(38.878337, -77.100703, category, PREFS)
 
     return jsonify({'place': s[0], 'score': score, 'habit': habit})
+
+@app.route("/suggest")
+def suggest_api():
+    category = request.args.get('category')
+    lng = request.args.get('pos[lng]')
+    lat = request.args.get('pos[lat]')
+    return jsonify(suggest.suggest_alternative(lat, lng, category, PREFS))
+
+@app.route('/totals')
+def get_totals():
+    return jsonify(classify.parse_data(data_processing.strip_data(customer_id)))
+
+@app.route('/transactions')
+def get_transactions():
+    return jsonify(data_processing.get_sorted_filtered_purchases(customer_id))
 
 if __name__ == "__main__":
     import sys

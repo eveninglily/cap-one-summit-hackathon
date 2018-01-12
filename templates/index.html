@@ -3,21 +3,27 @@
 
 {% block subtitle %} | Login{% endblock %}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.ui.min.js" integrity="sha256-sy9XDO27Le9UKdsCaEwGdSqPWH2KCljZoREdFiuz14E=" crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
+{% endblock %}
+
 {% block content %}
-{{ super() }}
-<div id="hero-wrapper">
+    <div id="hero-wrapper">
         <div class="animation-group">
-            <h3 id="welcome-text" class="center-align">Welcome to our Capital One hack</h3>
+            <h3 id="welcome-text" class="center-align">What's Not in Your Wallet?</h3>
         </div>
         <div class="animation-group">
             <p class="center-align">
-                We have done some cool stuff
-        </div>
-        <div class="animation-group">
-            <p class="center-align">
-                Enter your name
+                Enter your name:
             </p>
-            <!-- Coordinates search form -->
+        </div>
+
+        <!-- Search form -->
+        <div class="animation-group">
             <div class="row">
                 <form id="search-form" action="/profile" method="GET">
                     <div class="col s12 m10 offset-m1 l8 offset-l2">
@@ -29,10 +35,28 @@
                             <input name="lastname" id="" type="text" class="validate">
                             <label>Last Name</label>
                         </div>
-                        <input type="submit" class="btn">
+                        <div class="center-align"><input type="submit" class="btn"></div>
                     </div>
                 </form>
             </div>
-          </div>
-</div>
+        </div>
+
+        <!-- Loading text and spinner -->
+        <div class="loading-wrapper">
+            <div class="preloader-wrapper small">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loading-text">Logging in&hellip;</div>
+        </div>
+    </div>
 {% endblock %}

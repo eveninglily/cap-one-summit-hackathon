@@ -15,13 +15,20 @@
         <h4>Recent Purchases</h4>
         <div class="collection">
             {% for purchase in purchase_history %}
-            <a class="collection-item purchase-item">
+            <a class="collection-item purchase-item{{ " bad" if purchase["classification"] else " good" }}">
                 <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
+                <div style="display:none" class="category">{{ purchase["purchase_category"] }}</div>
                 <h5 class="merchant-name">{{ purchase["merchant_name"] }}</h5>
                 <div class="purchase-amount">{{ purchase["purchase_amount"] | format_money }}</div>
                 <div class="purchase-date">{{ purchase["purchase_date"] }}</div>
             </a>
             {% endfor %}
+        </div>
+    </div>
+    <div id="recommendations" class="map-overlay card-panel">
+        <h4>Alternatives</h4>
+        <div class="collection">
+            <h5 class="center-align">Click on a recent purchase on the left to find more responsible alternatives.</h5>
         </div>
     </div>
 {% endblock %}
