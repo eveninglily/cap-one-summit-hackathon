@@ -24,7 +24,7 @@ def profile():
     first_name = request.args.get("firstname")
     last_name = request.args.get("lastname")
     if not first_name or not last_name:
-        return render_template("index.html", isLoginPage=True)
+        return render_template("profile.html", firstname="", lastname="")
     return render_template("profile.html", firstname=first_name, lastname=last_name)
 
 @app.route("/alexa")
