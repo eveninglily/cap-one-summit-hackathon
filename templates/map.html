@@ -15,7 +15,7 @@
         <h4>Recent Purchases</h4>
         <div class="collection">
             {% for purchase in purchase_history %}
-            <a class="collection-item purchase-item">
+            <a class="collection-item purchase-item{{ " bad" if purchase["classification"] else " good" }}">
                 <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
                 <div style="display:none" class="category">{{ purchase["purchase_category"] }}</div>
                 <h5 class="merchant-name">{{ purchase["merchant_name"] }}</h5>

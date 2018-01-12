@@ -38,6 +38,10 @@ html, body {
     cursor: pointer;
 }
 
+#purchase-history .purchase-item.bad {
+    background-color: rgba(255, 23, 68, 0.5);
+}
+
 #purchase-history .purchase-item .merchant-name, #recommendations .collection .merchant-item {
     color: white;
 }
