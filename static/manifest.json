@@ -1,0 +1,11 @@
+{
+  "short_name": "Dab On The Haters",
+  "name": "Smiley Face XD",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": ".",
+  "display": "standalone"
+}
