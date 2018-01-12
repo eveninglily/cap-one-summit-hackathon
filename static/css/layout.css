@@ -1,6 +1,5 @@
 body {
-    /* Background pattern from subtlepatterns.com */
-    background-image: url("/seigaiha.png");
+    background-image: url("/uploads/seigaiha.png");
     background-attachment: fixed;
 }
 
@@ -57,4 +56,3 @@ h3 {
         padding-right: 5px;
     }
 }
-
