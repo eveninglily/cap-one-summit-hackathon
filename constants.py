@@ -9,13 +9,8 @@ GENERAL_CATEGORIES = OrderedDict([
     ])
 
 PREFS = {
-        "bar": ["gym", "bowling_alley"],
-        "liquor_store": ["grocery_or_supermarket", "cafe"],
-        "meal_takeaway": ["grocery_or_supermarket"],
-        "meal_delivery": ["grocery_or_supermarket"],
-        "shopping_mall": ["book_store", "library", "zoo", "spa", "museum"],
-        "department_store": ["book_store", "library", "zoo", "spa", "museum"],
-        "clothing_store": ["book_store", "library", "zoo", "spa", "museum"],
-        "casino": ["movie_theater", "book_store", "library", "zoo", "spa", "museum"]
+        "drinking_and_gambling": ["gym", "bowling_alley", "grocery_or_supermarket", "cafe", "movie_theater", "book_store", "library", "zoo", "spa", "museum"],
+        "food": ["grocery_or_supermarket", "grocery_or_supermarket"],
+        "shopping": ["book_store", "library", "zoo", "spa", "museum", "book_store", "library", "zoo", "spa", "museum", "book_store", "library", "zoo", "spa", "museum"],
         }
 

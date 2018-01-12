@@ -17,6 +17,7 @@
             {% for purchase in purchase_history %}
             <a class="collection-item purchase-item">
                 <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
+                <div style="display:none" class="category">{{ purchase["purchase_category"] }}</div>
                 <h5 class="merchant-name">{{ purchase["merchant_name"] }}</h5>
                 <div class="purchase-amount">{{ purchase["purchase_amount"] | format_money }}</div>
                 <div class="purchase-date">{{ purchase["purchase_date"] }}</div>
@@ -26,13 +27,6 @@
     </div>
     <div id="recommendations" class="map-overlay card-panel">
         <h4>Alternatives</h4>
-        <div class="collection">
-            {% for merchant in recommendations %}
-            <a class="collection-item merchant-item">
-                <div style="display:none" class="geocode">{{ purchase["geocode"]["lat"] }},{{ purchase["geocode"]["lng"] }}</div>
-                <h5 class="merchant-name">{{ merchant["merchant_name"] }}</h5>
-            </a>
-            {% endfor %}
-        </div>
+        <div class="collection"></div>
     </div>
 {% endblock %}

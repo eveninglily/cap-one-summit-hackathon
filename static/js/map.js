@@ -1,5 +1,6 @@
 var map;
 var purchaseMarker;
+var altMarkers;
 
 function initMap() {
     let dc = {lat: 38.9, lng: -77.01};
@@ -10,8 +11,13 @@ function initMap() {
 }
 
 function getSuggest(category) {
-    $.getJSON('suggest', {'category': category}, data => {
-        console.log(data);
+    $.getJSON('suggest', {'category': category}, function(data) {
+        let $recommendations = $("#recommendations > .collection");
+        for (let i=0; i<data.length; i++) {
+            $recommendations.append("<a class='collection-item merchant-item'>"
+                + data[i].name
+                + "</a>");
+        }
     });
 }
 
@@ -30,5 +36,22 @@ $(document).ready(function() {
         })
 
         map.panTo(latlng);
+
+        if (altMarkers) {
+            for (let i=0; i<altMarkers.length; i++) {
+                altMarkers[i].setMap(null);
+            }
+        }
+
+        altMarkers = [];
+        $("#recommendations > .collection").empty();
+
+        let category = $(this).find("div.category").text();
+        if (category !== "other") {
+            getSuggest(category);
+        }
+    });
+
+    $("#recommendations .merchant-item").click(function() {
     });
 });
