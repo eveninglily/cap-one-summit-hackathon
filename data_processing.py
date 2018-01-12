@@ -50,6 +50,7 @@ def categorize_purchases(purchases):
         purchase_general_category = get_general_category(get_merchant_categories(purchase["merchant_id"]))
         purchase_data = get_merchant_data(purchase["merchant_id"])
         purchase_data["purchase_date"] = purchase["purchase_date"]
+        purchase_data["purchase_amount"] = purchase["amount"]
         purchase_data["purchase_category"] = purchase_general_category
         categorized_purchases[purchase_general_category].append(purchase_data)
 
@@ -66,5 +67,15 @@ def sort_purchases_by_date(categorized_purchases):
 def get_sorted_filtered_purchases(customer_id):
     return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))
 
+def strip_data():
+    data = get_sorted_filtered_purchases(CUSTOMER_ID)
+    stripped = {}
+    for entry in data:
+        if not entry['purchase_category'] in stripped.keys():
+            stripped[entry['purchase_category']] = []
+        stripped[entry['purchase_category']].append((entry['purchase_date'], entry['purchase_amount']))
+    return stripped
+
 if __name__ == "__main__":
-    print(get_sorted_filtered_purchases(CUSTOMER_ID))
+    #print(get_sorted_filtered_purchases(CUSTOMER_ID))
+    print(strip_data())
