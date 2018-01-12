@@ -13,10 +13,6 @@ nav, .navbar-fixed, .nav-wrapper i {
     padding-right: 1rem;
 }
 
-h3 {
-    color: #2196F3;
-}
-
 .input-field input[type=text]:focus + label {
     color: #2196f3 !important;
 }
