@@ -38,20 +38,8 @@ def generate_purchases():
     purchases["other"] = [generate_purchase() for _ in range(100 - total)]
     return purchases
 
-def get_merchants_multi(categories):
-
-    return merchants
-
 # Gets a list of nessie merchants based on category, then filters by zip code
-def get_local_merchants(category, zip):
-    ret = []
-    merchants = get_merchants(category)
-    for merchant in merchants:
-        if merchant['address']['zip'] == zip:
-            ret.append(merchant)
-    return ret
-
-def get_local_merchants(categories, zip):
+def get_local_merchants(categories, zip_codes):
     req = requests.get('http://api.reimaginebanking.com/merchants',
                         params={'key': NESSIE_KEY})
     merchants = []
@@ -60,25 +48,25 @@ def get_local_merchants(categories, zip):
         for cat in merchant['category']:
             for c2 in categories:
                 if cat == c2:
-                    if zip == None:
+                    if zip_codes == None:
                         merchants.append(merchant)
                         break
                     else:
-                        for z in zip:
+                        for z in zip_codes:
                             if merchant['address']['zip'] == z:
                                 merchants.append(merchant)
                                 break
     return merchants
 
 # Creates a lot of purchases through the nessie API
-def generate_nessie_purchases(client):
+def generate_nessie_purchases(client, zip_codes=None):
     purchase_data = generate_purchases()
 
     merchants = {}
-    merchants["other"] = get_local_merchants(allowed_categories, None)
+    merchants["other"] = get_local_merchants(allowed_categories, zip_codes)
     for category in GENERAL_CATEGORIES.keys():
         print(list(GENERAL_CATEGORIES[category]))
-        merchants[category] = get_local_merchants(list(GENERAL_CATEGORIES[category]), None)
+        merchants[category] = get_local_merchants(list(GENERAL_CATEGORIES[category]), zip_codes)
     for category in purchase_data:
         for purchase in purchase_data[category]:
             i = math.floor(random.random() * len(merchants[category]))
