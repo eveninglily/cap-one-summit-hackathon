@@ -14,9 +14,14 @@ function getSuggest(category) {
     $.getJSON('suggest', {'category': category}, function(data) {
         let $recommendations = $("#recommendations > .collection");
         for (let i=0; i<data.length; i++) {
-            $recommendations.append("<a class='collection-item merchant-item'>"
+            $recommendations.append("<a class='collection-item merchant-item'><h5>"
                 + data[i].name
-                + "</a>");
+                + "</h5></a>");
+            altMarkers.push(new google.maps.Marker({
+                position: {"lat": data[i].lat, "lng": data[i].lng},
+                icon: "/uploads/alt_marker.png",
+                map: map,
+            }));
         }
     });
 }
