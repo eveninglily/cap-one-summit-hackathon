@@ -1,3 +1,4 @@
+// graphs
 function drawBarChart() {
   var ctx = document.getElementById("histogram").getContext('2d');
   var myChart = new Chart(ctx, {
