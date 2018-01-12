@@ -90,5 +90,5 @@ def get_alexa_data(customer_id):
     return s[len(s) - 1]
 
 if __name__ == "__main__":
-    #print(get_sorted_filtered_purchases(CUSTOMER_ID))
+    print(get_sorted_filtered_purchases(CUSTOMER_ID))
     print(get_alexa_data(CUSTOMER_ID))
