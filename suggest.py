@@ -4,28 +4,33 @@ import random
 import math
 import json
 
+prefs = {
+    "bar": ["gym", "bowling_alley"],
+    "liquor_store": ["grocery_or_supermarket", "cafe"],
+    "meal_takeaway": ["grocery_or_supermarket"],
+    "meal_delivery": ["grocery_or_supermarket"],
+    "shopping_mall": ["book_store", "library", "zoo", "spa", "museum"],
+    "department_store": ["book_store", "library", "zoo", "spa", "museum"],
+    "clothing_store": ["book_store", "library", "zoo", "spa", "museum"],
+    "casino": ["movie_theater", "book_store", "library", "zoo", "spa", "museum"]
+}
+
 def suggest_alternative(lat, lng, category, prefs):
     i = math.floor(len(prefs[category]) * random.random())
-    type = prefs[category][0]
+    type = prefs[category][i]
+    #print(type)
     req = requests.get(
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?',
         params={
             'key': PLACES_KEY,
             'location': "{},{}".format(lat, lng),
             'radius': 1609 * 2,
-            'maxprice': 2,
-            'type': 'art_gallery'
+            'type': type
         }
     )
 
     # Return top 5 suggestions
-    print(json.dumps(req.json(), indent=4))
+    #print(json.dumps(req.json()["results"][0], indent=4))
+    return req.json()["results"][:5]
 
-suggest_alternative(38.878337, -77.100703, "bar", {"bar":"art_gallery"})
-
-# habit alternatives:
-# bar/liquor_store: art_gallery/museum
-# food/meal_delivery/restaurant: physiotherapist/spa
-# shopping_mall/department_store/clothing_store:
-# movie_theater: amusement_park/aquarium
-# casino: campground
+#print(suggest_alternative(38.878337, -77.100703, "casino", prefs))
