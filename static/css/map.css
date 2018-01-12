@@ -1,5 +1,11 @@
-html, body, #content {
+html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    height: 95%;
     margin: 0;
     padding: 0;
 }
@@ -12,17 +18,17 @@ html, body, #content {
     position: absolute;
     background-color: rgba(84, 110, 122, 0.9);
     color: white;
-    max-width: 40%;
-    max-height: 40%;
-    height: 40%;
+    max-width: 35%;
+    max-height: 35%;
+    height: 35%;
 }
 
 #purchase-history {
     bottom: 0;
-    left: 10px;
+    left: 30px;
 }
 
-#purchase-history .collection {
+#purchase-history .collection, #recommendations .collection {
     max-height: 80%;
     overflow-y: auto;
 }
@@ -46,5 +52,5 @@ html, body, #content {
 
 #recommendations {
     bottom: 0;
-    right: 10px;
+    right: 40px;
 }
