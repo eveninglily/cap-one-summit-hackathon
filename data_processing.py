@@ -4,6 +4,8 @@ import secret
 import classify
 
 
+PURCHASE_HISTORY_SIZE = 30
+
 def get_account_ids(customer_id):
     get_params = {"key": secret.NESSIE_KEY}
     get_request = requests.get("{}/customers/{}/accounts".format(API_ROOT, customer_id), params=get_params)
@@ -66,7 +68,7 @@ def sort_purchases_by_date(categorized_purchases):
     return all_purchases
 
 def get_sorted_filtered_purchases(customer_id):
-    return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))
+    return sort_purchases_by_date(categorize_purchases(get_all_purchases(customer_id)))[:PURCHASE_HISTORY_SIZE]
 
 def strip_data(customer_id):
     data = get_sorted_filtered_purchases(customer_id)
