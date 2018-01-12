@@ -52,22 +52,18 @@ def process(obj):
         status[category] = ["", ""]
         if category != "other":
             if v[1] == 0 or v[1] >= 2.5:
-                status[category][1] = "Good";
+                status[category][1] = 0;
             elif v[1] < 2.5 or v >= 1:
-                status[category][1] = "Warning";
+                status[category][1] = 1;
             else:
-                status[category][1] = "Bad";
+                status[category][1] = 2;
 
             if (v[0] * 1.0) / sum > .25:
-                status[category][0] = "Bad"
+                status[category][0] = 0
             else:
-                status[category][0] = "Good"
-
-    for category in status:
-        print(category)
-        print("Frequency: {}, Amount: {}".format(status[category][1], status[category][0]))
-        print("---")
-    #print(status)
+                status[category][0] = 1
+    del status["other"]
+    return status
 
 # Returns 0 for "good", 1 for drinking, 2 for shopping, 3 for food
 def classify_merchant(merchant_id):
@@ -79,7 +75,7 @@ def classify_merchant(merchant_id):
             if category in list(GENERAL_CATEGORIES[c]):
                 if c == "drinking_and_gambling":
                     return 1
-                elif c == "shopping"
+                elif c == "shopping":
                     return 2
                 else:
                     return 3
