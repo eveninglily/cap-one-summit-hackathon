@@ -10,6 +10,12 @@ app = Flask(__name__, static_url_path="")
 customer_id = "5a563d3b5eaa612c093b0ba2"
 
 
+@app.template_filter()
+def format_money(m):
+    if m is None:
+        return "Error"
+    return "${:,.2f}".format(m)
+
 @app.route("/map")
 def map():
     purchase_history = data_processing.get_sorted_filtered_purchases(customer_id)
@@ -24,7 +30,7 @@ def profile():
     first_name = request.args.get("firstname")
     last_name = request.args.get("lastname")
     if not first_name or not last_name:
-        return render_template("index.html", isLoginPage=True)
+        return render_template("profile.html", firstname="", lastname="")
     return render_template("profile.html", firstname=first_name, lastname=last_name)
 
 @app.route("/alexa")

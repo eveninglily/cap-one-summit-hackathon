@@ -8,21 +8,28 @@ html, body, #content {
     height: 100%;
 }
 
-#purchase-history {
+.map-overlay {
     position: absolute;
-    bottom: 0;
-    left: 10px;
-    max-height: 50%;
     background-color: rgba(84, 110, 122, 0.9);
     color: white;
+    max-width: 40%;
+    max-height: 40%;
+    height: 40%;
+}
+
+#purchase-history {
+    bottom: 0;
+    left: 10px;
 }
 
 #purchase-history .collection {
+    max-height: 80%;
     overflow-y: auto;
 }
 
 #purchase-history .purchase-item {
     background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 #purchase-history .purchase-item .merchant-name {
@@ -31,4 +38,8 @@ html, body, #content {
 
 #purchase-history .purchase-item .purchase-date {
     color: #ECEFF1;
+}
+
+#purchase-history .purchase-item .purchase-amount {
+    color: #00E676;
 }
