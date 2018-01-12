@@ -9,7 +9,7 @@ from constants import PREFS
 
 
 app = Flask(__name__, static_url_path="")
-customer_id = "5a563d1b5eaa612c093b0b13"
+customer_id = "5a563d165eaa612c093b0ac4"
 
 
 @app.template_filter()

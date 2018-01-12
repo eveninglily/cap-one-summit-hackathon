@@ -13,4 +13,3 @@ PREFS = {
         "food": ["grocery_or_supermarket", "grocery_or_supermarket"],
         "shopping": ["book_store", "library", "zoo", "spa", "museum", "book_store", "library", "zoo", "spa", "museum", "book_store", "library", "zoo", "spa", "museum"],
         }
-
