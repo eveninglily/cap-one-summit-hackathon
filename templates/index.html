@@ -1,44 +1,41 @@
 {% extends "layout.html" %}
 
-{% block head %}
-    {{ super() }}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="manifest" href="/manifest.json">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="/js/graphs.js"></script>
-
-    <script>
-      // register service worker
-      if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-              navigator.serviceWorker.register('../sw.js').then(function(registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-              }, function(err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-              });
-            });
-        }
-    </script>
-{% endblock %}
+{% block subtitle %} | Login{% endblock %}
 
 {% block content %}
-    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">Hello John.</h5>
-    <h5 style="text-align: center">Here are your statistics:</h5>
-    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">And here are your graphs:</h5>
+{{ super() }}
+<div id="hero-wrapper">
+        <div class="animation-group">
+            <h3 id="welcome-text" class="center-align">Welcome to our Capital One hack</h3>
+        </div>
 
-    <div class="row">
-        <div class="col s4">
-            <canvas id="histogram" width="400" height="400"></canvas>
+        <div class="animation-group">
+            <p class="center-align">
+                We have done some cool stuff
+            </p>
         </div>
-        <div class="col s4">
-            <canvas id="pieChart" width="400" height="400"></canvas>
-        </div>
-        <div class="col s4">
-            <canvas id="lineChart" width="400" height="400"></canvas>
-        </div>
-    </div>
+        <div class="animation-group">
+            <p class="center-align">
+                Enter your name
+            </p>
+
+            <!-- Coordinates search form -->
+            <div class="row">
+                <form id="search-form" action="/profile" method="GET">
+                    <div class="col s12 m10 offset-m1 l8 offset-l2">
+                        <div class="input-field col s6">
+                            <input name="firstname" id="" type="text" class="validate">
+                            <label>First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input name="lastname" id="" type="text" class="validate">
+                            <label>Last Name</label>
+                        </div>
+                        <input type="submit" class="btn waves-effect">
+                    </div>
+                </form>
+            </div>
+          </div>
+</div>
 {% endblock %}

@@ -15,13 +15,17 @@ def map():
     purchase_history = data_processing.get_sorted_filtered_purchases(customer_id)
     return render_template("map.html", mapsKey=secret.MAPS_KEY, purchase_history=purchase_history)
 
-@app.route("/login")
-def login():
-    return render_template("login.html", isLoginPage=True)
-
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", isLoginPage=True)
+
+@app.route("/profile")
+def profile():
+    first_name = request.args.get("firstname")
+    last_name = request.args.get("lastname")
+    if not first_name or not last_name:
+        return render_template("index.html", isLoginPage=True)
+    return render_template("profile.html", firstname=first_name, lastname=last_name)
 
 if __name__ == "__main__":
     import sys

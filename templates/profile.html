@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="/js/graphs.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">Hello {{ firstname }} {{ lastname }}.</h5>
+    <h5 style="text-align: center">Here are your statistics:</h5>
+    <h5 style="text-align: center; padding-top: 50px; padding-bottom: 50px">And here are your graphs:</h5>
+
+    <div class="row">
+        <div class="col s4">
+            <canvas id="histogram" width="400" height="400"></canvas>
+        </div>
+        <div class="col s4">
+            <canvas id="pieChart" width="400" height="400"></canvas>
+        </div>
+        <div class="col s4">
+            <canvas id="lineChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+{% endblock %}
