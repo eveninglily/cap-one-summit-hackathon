@@ -55,11 +55,12 @@ def alexa():
 @app.route("/suggest")
 def suggest_api():
     category = request.args.get('category')
-    return jsonify(suggest.suggest_alternative(38.878337, -77.100703, category, PREFS))
+    lng = request.args.get('pos[lng]')
+    lat = request.args.get('pos[lat]')
+    return jsonify(suggest.suggest_alternative(lat, lng, category, PREFS))
 
 @app.route('/totals')
 def get_totals():
-    data = classify
     return jsonify(classify.parse_data(data_processing.strip_data(customer_id)))
 
 @app.route('/transactions')

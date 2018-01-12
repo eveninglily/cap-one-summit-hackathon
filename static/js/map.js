@@ -10,8 +10,8 @@ function initMap() {
     });
 }
 
-function getSuggest(category) {
-    $.getJSON('suggest', {'category': category}, function(data) {
+function getSuggest(category, latlng) {
+    $.getJSON('suggest', {'category': category, 'pos': latlng}, function(data) {
         let $recommendations = $("#recommendations > .collection");
         for (let i=0; i<data.length; i++) {
             $recommendations.append("<a class='collection-item merchant-item'><h5>"
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
         let category = $(this).find("div.category").text();
         if (category !== "other") {
-            getSuggest(category);
+            getSuggest(category, latlng);
         }
     });
 
