@@ -1,5 +1,5 @@
 // graphs
-function drawBarChart() {
+/*function drawBarChart() {
   var ctx = document.getElementById("histogram").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -37,7 +37,7 @@ function drawBarChart() {
       }
     }
   });
-}
+}*/
 
 function drawPieChart() {
   var ctx = document.getElementById('pieChart').getContext('2d');
@@ -69,7 +69,7 @@ function drawLineChart() {
 }
 
 $(document).ready(function() {
-  drawBarChart()
+  //drawBarChart()
   drawPieChart()
   drawLineChart()
 });
